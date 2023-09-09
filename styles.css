@@ -26,6 +26,7 @@
 
 .gameSquare > div:hover {
     background-color: #000; 
+    cursor: pointer; 
 }
 
 .topLeft {

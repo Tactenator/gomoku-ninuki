@@ -1,0 +1,54 @@
+.gameBoard {
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+    width: 25%; 
+    
+}
+
+.gameSquare {
+    border: 1px inset #999;
+    display: flex;
+    flex-wrap: wrap; 
+    transition: 0.2s;
+    height: 40px; 
+    width: 40px; 
+    position: relative; 
+}
+
+.gameSquare > div {
+    width: 20px; 
+    height: 20px; 
+    transition: 0.2s;
+    position: absolute; 
+    z-index: 10; 
+}
+
+.gameSquare > div:hover {
+    background-color: #000; 
+}
+
+.topLeft {
+    background-color: blue;
+    top: -25%; 
+    left: -25%; 
+}
+
+.topRight {
+    background-color: red;
+    top: -25%; 
+    left: 75%; 
+}
+
+.bottomLeft {
+    background-color: green;
+    top:  75%; 
+    left: -25%; 
+}
+
+.bottomRight {
+    background-color: purple;
+    top: 75%; 
+    left: 75%; 
+}
+

@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', (e) => {
+
+
+    /**
+     * ************BOARD************
+     */
+
+
     const boardButtons = document.querySelectorAll('button')
     const gameBoard = document.querySelector('.gameBoard')
-
     const lettersArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
     for(let i = 0; i < boardButtons.length; i++) {
@@ -55,7 +61,20 @@ document.addEventListener('DOMContentLoaded', (e) => {
             }
             
         }
+        
+        addLocationActivity(spaces)
+    }
 
+    function addLocationActivity(e) {
+        const spacesArr = Array.from(e)
+        spacesArr.forEach(space => {
+            const children = Array.from(space.children); 
+            children.forEach(child => {
+                child.addEventListener('click', (e => {
+                    console.log(e.target.getAttribute('location'))
+                }))
+            })
+        }) 
     }
     
 })

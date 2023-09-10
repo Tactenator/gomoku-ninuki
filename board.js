@@ -10,42 +10,45 @@ document.addEventListener('DOMContentLoaded', (e) => {
     const gameBoard = document.querySelector('.gameBoard')
     const lettersArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
+    //creates a board based on the value of the button
     for(let i = 0; i < boardButtons.length; i++) {
         boardButtons[i].addEventListener('click', (e) => {
             createBoard(e.target.value)
         })
     }
 
+    //intializes board
     function createBoard(e) {
         for(let i = 0; i < e; i++) {
             for(let j = 0; j < e; j++) {
+                //creates new square and adds row value + square value.
                 const newSquare = document.createElement('div')
                 newSquare.setAttribute('row-id', lettersArr[i])
                 newSquare.setAttribute('square-value', j + 1);  
                 newSquare.classList.add('gameSquare'); 
+                //appends new square to board
                 gameBoard.append(newSquare)
             }
         }
         createCorners()
     }
 
+    //creates corners; places where the player can actually set stones.
     function createCorners () {
         const spaces = document.querySelectorAll('.gameSquare')
         for(let i = 0; i < spaces.length; i++) {
             const rowId = spaces[i].getAttribute('row-id')
             const squareValue = parseInt(spaces[i].getAttribute('square-value'))
             const topLeft = document.createElement('div')
+            
             topLeft.classList.add('topLeft')
             spaces[i].append(topLeft)
             topLeft.setAttribute('location', topLeft.parentElement.getAttribute('row-id') + squareValue)
             if(squareValue === 9) {
                 const topRight = document.createElement('div')
                 topRight.classList.add('topRight')
-                // const bottomRight = document.createElement('div')
-                // bottomRight.classList.add('bottomRight')
                 spaces[i].append(topRight)
                 topRight.setAttribute('location', topRight.parentElement.getAttribute('row-id') + (squareValue + 1) )
-                // bottomRight.setAttribute('location', bottomRight.parentElement.getAttribute('row-id') + squareValue)
             }
             if(rowId === 'i') {
                 const bottomLeft = document.createElement('div')

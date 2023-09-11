@@ -68,16 +68,43 @@ document.addEventListener('DOMContentLoaded', (e) => {
         addLocationActivity(spaces)
     }
 
+    /****************** GAMEPLAY  **************/
+
+    let isBlacksTurn = true; 
+
+    const stone = {
+        height: '25px',
+        width: '25px', 
+        radius: '50%', 
+        
+    }
+
+
+
     function addLocationActivity(e) {
         const spacesArr = Array.from(e)
         spacesArr.forEach(space => {
             const children = Array.from(space.children); 
             children.forEach(child => {
                 child.addEventListener('click', (e => {
-                    console.log(e.target.getAttribute('location'))
+                    const targetDiv = e.target; 
+                    const newStone = document.createElement('div')
+                    newStone.style.height = stone.height; 
+                    newStone.style.width = stone.width; 
+                    newStone.style.borderRadius = stone.radius; 
+                    if(isBlacksTurn) {
+                        isBlacksTurn = false
+                        newStone.style.backgroundColor = 'black'                        
+                    }
+                    else {
+                        isBlacksTurn = true; 
+                        newStone.style.backgroundColor = 'white'
+                    }
+                    targetDiv.append(newStone)
                 }))
             })
         }) 
     }
+
     
 })

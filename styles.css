@@ -8,18 +8,19 @@ body {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
-    max-width: 450px;  
+    width: 450px;  
     margin-top: 15vh; 
 }
 
 .gameSquare {
-    border: 1px inset #999;
+    border: 1px inset #000;
     display: flex;
     flex-wrap: wrap; 
     transition: 0.2s;
     height: 50px; 
     width: 50px; 
-    position: relative; 
+    position: relative;
+    background-color: #dcb35c; 
 }
 
 .gameSquare > div {
@@ -36,25 +37,22 @@ body {
 }
 
 .topLeft {
-    background-color: blue;
     top: -25%; 
     left: -25%; 
 }
 
 .topRight {
-    background-color: red;
     top: -25%; 
     left: 75%; 
 }
 
 .bottomLeft {
-    background-color: green;
     top:  75%; 
     left: -25%; 
 }
 
 .bottomRight {
-    background-color: purple;
+
     top: 75%; 
     left: 75%; 
 }

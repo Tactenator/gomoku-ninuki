@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
                     }
                     targetDiv.append(newStone)
                     handleTurn()
-                    checkWin()
+                    checkWin(stoneRow, stoneColumn)
                 }))
             })
         }) 
@@ -135,37 +135,56 @@ document.addEventListener('DOMContentLoaded', (e) => {
         }
     }
 
-    function checkWin() {
+    function checkWin(stoneRow, stoneColumn) {
         if(!isBlacksTurn){
-            for(let i = 0; i < lettersArr.length; i++){
-                let rowWin = checkRowWin(blackStonesRow, lettersArr[i])
-                let colWin = checkRowWin(blackStonesColumn, String(numbersArr[i]))
-                 if( rowWin || colWin) {
-                //announce winning player
-                console.log('Black wins!')
-                }
-            }
+            
+            let rowWin = checkRowWin(stoneRow, 'black')
+            let colWin = checkRowWin(stoneColumn, 'black')
+
+            // for(let i = 0; i < lettersArr.length; i++){
+            //     let rowWin = checkRowWin(lettersArr[i], 'black')
+            //     // let colWin = checkRowWin(blackStonesColumn, String(numbersArr[i]))
+            //      if( rowWin ) {
+            //     //announce winning player
+            //     console.log('Black wins!')
+            //     }
+            // }
             
            
         }
-        else {
-            for(let i = 0; i < lettersArr.length; i++){
-                let rowWin = checkRowWin(whiteStonesRow, lettersArr[i])
-                let colWin = checkRowWin(whiteStonesColumn, String(numbersArr[i]))
-                 if( rowWin || colWin) {
-                //announce winning player
-                console.log('White wins!')
-                }
-            }
-        }
+        // else {
+
+            let rowWin = checkRowWin(stoneRow, 'white')
+            let colWin = checkRowWin(stoneColumn, 'white')
+        //     for(let i = 0; i < lettersArr.length; i++){
+        //         let rowWin = checkRowWin(whiteStonesRow, lettersArr[i])
+        //         // let colWin = checkRowWin(whiteStonesColumn, String(numbersArr[i]))
+        //          if( rowWin) {
+        //         //announce winning player
+        //         console.log('White wins!')
+        //         }
+        //     }
+        // }
     }
 
-    function checkRowWin(arr, val) {
+    function checkRowWin(row, val) {
         let count = 0;
-        arr.forEach((x) => (x === val && count++));
-        if(count === 5) {
-            return true
-        }
+        let stonesArr = []
+        const rows = document.querySelectorAll(`div[row-id=${row}] > .topLeft`)
+        rows.forEach((ele) => {
+            if(ele.children.length === 0) {
+                stonesArr.push('')
+            }
+            else {
+                let childAttribute = ele.children[0].getAttribute('player')
+                stonesArr.push(childAttribute)
+            }
+        })
+        console.log(stonesArr)
+        // rows.forEach((x) => (x === val ? count++ : count = 0));
+        // if(count === 5) {
+        //     return true
+        // }
     }
     
 })

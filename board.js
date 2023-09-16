@@ -137,41 +137,22 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     function checkWin(stoneRow, stoneColumn) {
         if(!isBlacksTurn){
-            
-            let rowWin = checkRowWin(stoneRow, 'black')
-            let colWin = checkRowWin(stoneColumn, 'black')
-
-            // for(let i = 0; i < lettersArr.length; i++){
-            //     let rowWin = checkRowWin(lettersArr[i], 'black')
-            //     // let colWin = checkRowWin(blackStonesColumn, String(numbersArr[i]))
-            //      if( rowWin ) {
-            //     //announce winning player
-            //     console.log('Black wins!')
-            //     }
-            // }
-            
-           
+            checkRowWin('row', stoneRow, 'black')
+            checkRowWin('col', stoneColumn, 'black')   
         }
-        // else {
+        else {
 
-            let rowWin = checkRowWin(stoneRow, 'white')
-            let colWin = checkRowWin(stoneColumn, 'white')
-        //     for(let i = 0; i < lettersArr.length; i++){
-        //         let rowWin = checkRowWin(whiteStonesRow, lettersArr[i])
-        //         // let colWin = checkRowWin(whiteStonesColumn, String(numbersArr[i]))
-        //          if( rowWin) {
-        //         //announce winning player
-        //         console.log('White wins!')
-        //         }
-        //     }
-        // }
+            checkRowWin('row', stoneRow, 'white')
+            checkRowWin('col', stoneColumn, 'white')
+        }
     }
 
-    function checkRowWin(row, val) {
+    function checkRowWin(type, file, val) {
         let count = 0;
-        let stonesArr = []
-        const rows = document.querySelectorAll(`div[row-id=${row}] > .topLeft`)
-        rows.forEach((ele) => {
+        let stonesArr = [];
+        let stones = type === 'row' ? document.querySelectorAll(`div[row-id=${file}] > .topLeft`) : 
+        document.querySelectorAll(`div[square-value="${file}"] > .topLeft`)
+        stones.forEach((ele) => {
             if(ele.children.length === 0) {
                 stonesArr.push('')
             }
@@ -180,11 +161,19 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 stonesArr.push(childAttribute)
             }
         })
-        console.log(stonesArr)
-        // rows.forEach((x) => (x === val ? count++ : count = 0));
-        // if(count === 5) {
-        //     return true
-        // }
+        stonesArr.forEach((stone) => {
+            if(stone === val) { 
+                count++ 
+                console.log(count ===5)
+                if(count === 5){
+                    console.log(`${val} wins!`)
+                    return true; 
+                }
+            } 
+            else {
+                count = 0; 
+            }
+        })
     }
     
 })

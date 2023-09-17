@@ -139,11 +139,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
         if(!isBlacksTurn){
             checkRowWin('row', stoneRow, 'black')
             checkRowWin('col', stoneColumn, 'black')   
+            checkDiagonalWin('black')
         }
         else {
 
             checkRowWin('row', stoneRow, 'white')
             checkRowWin('col', stoneColumn, 'white')
+            checkDiagonalWin('white')
         }
     }
 
@@ -175,5 +177,17 @@ document.addEventListener('DOMContentLoaded', (e) => {
             }
         })
     }
-    
+
+    function checkDiagonalWin(player) {
+        //grab from each diagonal. Needs to be from each side. 
+        console.log(player)
+        let stonesArr = []
+        for (i = 0; i < lettersArr.length; i++) {
+            for(j = 0; j < lettersArr.length; j++) {
+                let square = document.querySelector(`div[location=${lettersArr[i]}${numbersArr[i]}]`)
+                console.log(square)
+            }
+        }
+    }   
+
 })

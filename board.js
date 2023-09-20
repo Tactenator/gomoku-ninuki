@@ -83,20 +83,23 @@ document.addEventListener('DOMContentLoaded', (e) => {
      ['f5', 'g4', 'h3', 'i2', 'j1']
     ]
 
-    const boardButtons = document.querySelectorAll('button')
+    const newGameButton = document.querySelector('.new-game')
     const gameBoard = document.querySelector('.gameBoard')
     const lettersArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
     const numbersArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-    //creates a board based on the value of the button
-    for(let i = 0; i < boardButtons.length; i++) {
-        boardButtons[i].addEventListener('click', (e) => {
-            createBoard(e.target.value)
-        })
-    }
+    newGameButton.addEventListener('click', () => {
+       let gameBoardChildren = document.querySelectorAll('.gameBoard > div'); 
+       gameBoardChildren.forEach(child => {
+        child.remove()
+       })
+       createBoard(9)
+    })
+    
 
     //initializes board
     function createBoard(e) {
+        console.log(e)
         for(let i = 0; i < e; i++) {
             for(let j = 0; j < e; j++) {
                 //creates new square and adds row value + square value.

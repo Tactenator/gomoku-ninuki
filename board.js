@@ -87,12 +87,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
     const gameBoard = document.querySelector('.gameBoard')
     const lettersArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
     const numbersArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    let isBlacksTurn = true; 
 
     newGameButton.addEventListener('click', () => {
        let gameBoardChildren = document.querySelectorAll('.gameBoard > div'); 
        gameBoardChildren.forEach(child => {
         child.remove()
        })
+       isBlacksTurn = true; 
+       handleTurn()
        createBoard(9)
     })
     
@@ -151,7 +154,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     /****************** GAMEPLAY  **************/
 
-    let isBlacksTurn = true; 
     handleTurn()
 
     const blackStonesRow = []

@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             const children = Array.from(space.children); 
             children.forEach(child => {
                 child.addEventListener('click', (e => {
-                    const targetDiv = e.target; 
+                    const targetDiv = e.target;
                     const newStone = document.createElement('div')
                     newStone.style.height = stone.height; 
                     newStone.style.width = stone.width; 
@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
                         whiteStonesRow.push(stoneRow)
                         whiteStonesColumn.push(stoneColumn)
                     }
+                    targetDiv.style.pointerEvents = "none";
                     targetDiv.append(newStone)
                     handleTurn()
                     checkWin(stoneRow, stoneColumn)

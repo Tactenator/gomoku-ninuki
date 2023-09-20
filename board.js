@@ -5,6 +5,83 @@ document.addEventListener('DOMContentLoaded', (e) => {
      * ************BOARD************
      */
 
+    const leftDiagonalWins = 
+    [['a1', 'b2', 'c3', 'd4', 'e5'], 
+     ['a2', 'b3', 'c4', 'd5', 'e6'],
+     ['a3', 'b4', 'c5', 'd6', 'e7'],
+     ['a4', 'b5', 'c6', 'd7', 'e8'],
+     ['a5', 'b6', 'c7', 'd8', 'e9'],
+     ['a6', 'b7', 'c8', 'd9', 'e10'],
+     ['b1', 'c2', 'd3', 'e4', 'f5'],
+     ['b2', 'c3', 'd4', 'e5', 'f6'],
+     ['b3', 'c4', 'd5', 'e6', 'f7'],
+     ['b4', 'c5', 'd6', 'e7', 'f8'],
+     ['b5', 'c6', 'd7', 'e8', 'f9'],
+     ['b6', 'c7', 'd8', 'e9', 'f10'],
+     ['c1', 'd2', 'e3', 'f4', 'g5'],
+     ['c2', 'd3', 'e4', 'f5', 'g6'],
+     ['c3', 'd4', 'e5', 'f6', 'g7'],
+     ['c4', 'd5', 'e6', 'f7', 'g8'],
+     ['c5', 'd6', 'e7', 'f8', 'g9'],
+     ['c6', 'd7', 'e8', 'f9', 'g10'],
+     ['d1', 'e2', 'f3', 'g4', 'h5'],
+     ['d2', 'e3', 'f4', 'g5', 'h6'],
+     ['d3', 'e4', 'f5', 'g6', 'h7'],
+     ['d4', 'e5', 'f6', 'g7', 'h8'],
+     ['d5', 'e6', 'f7', 'g8', 'h9'],
+     ['d6', 'e7', 'f8', 'g9', 'h10'],
+     ['e1', 'f2', 'g3', 'h4', 'i5'],
+     ['e2', 'f3', 'g4', 'h5', 'i6'],
+     ['e3', 'f4', 'g5', 'h6', 'i7'],
+     ['e4', 'f5', 'g6', 'h7', 'i8'],
+     ['e5', 'f6', 'g7', 'h8', 'i9'],
+     ['e6', 'f7', 'g8', 'h9', 'i10'],
+     ['f1', 'g2', 'h3', 'i4', 'j5'],
+     ['f2', 'g3', 'h4', 'i5', 'j6'],
+     ['f3', 'g4', 'h5', 'i6', 'j7'],
+     ['f4', 'g5', 'h6', 'i7', 'j8'],
+     ['f5', 'g6', 'h7', 'i8', 'j9'],
+     ['f6', 'g7', 'h8', 'i9', 'j10']
+    ]
+
+    const rightDiagonalWins = 
+    [['a10', 'b9', 'c8', 'd7', 'e6'], 
+     ['a9', 'b8', 'c7', 'd6', 'e5'],
+     ['a8', 'b7', 'c6', 'd5', 'e4'],
+     ['a7', 'b6', 'c5', 'd4', 'e3'],
+     ['a6', 'b5', 'c4', 'd3', 'e2'],
+     ['a5', 'b4', 'c3', 'd2', 'e1'],
+     ['b10', 'c9', 'd8', 'e7', 'f6'],
+     ['b9', 'c8', 'd7', 'e6', 'f5'],
+     ['b8', 'c7', 'd6', 'e5', 'f4'],
+     ['b7', 'c6', 'd5', 'e4', 'f3'],
+     ['b6', 'c5', 'd4', 'e3', 'f2'],
+     ['b5', 'c4', 'd3', 'e2', 'f1'],
+     ['c10', 'd9', 'e8', 'f7', 'g6'],
+     ['c9', 'd8', 'e7', 'f6', 'g5'],
+     ['c8', 'd7', 'e6', 'f5', 'g4'],
+     ['c7', 'd6', 'e5', 'f4', 'g3'],
+     ['c6', 'd5', 'e4', 'f3', 'g2'],
+     ['c5', 'd4', 'e3', 'f2', 'g1'],
+     ['d10', 'e9', 'f8', 'g7', 'h6'],
+     ['d9', 'e8', 'f7', 'g6', 'h5'],
+     ['d8', 'e7', 'f6', 'g5', 'h4'],
+     ['d7', 'e6', 'f5', 'g4', 'h3'],
+     ['d6', 'e5', 'f4', 'g3', 'h2'],
+     ['d5', 'e4', 'f3', 'g2', 'h1'],
+     ['e10', 'f9', 'g8', 'h7', 'i6'],
+     ['e9', 'f8', 'g7', 'h6', 'i5'],
+     ['e8', 'f7', 'g6', 'h5', 'i4'],
+     ['e7', 'f6', 'g5', 'h4', 'i3'],
+     ['e6', 'f5', 'g4', 'h3', 'i2'],
+     ['e5', 'f4', 'g3', 'h2', 'i1'],
+     ['f10', 'g9', 'h8', 'i7', 'j6'],
+     ['f9', 'g8', 'h7', 'i6', 'j5'],
+     ['f8', 'g7', 'h6', 'i5', 'j4'],
+     ['f7', 'g6', 'h5', 'i4', 'j3'],
+     ['f6', 'g5', 'h4', 'i3', 'j2'],
+     ['f5', 'g4', 'h3', 'i2', 'j1']
+    ]
 
     const boardButtons = document.querySelectorAll('button')
     const gameBoard = document.querySelector('.gameBoard')
@@ -139,13 +216,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
         if(!isBlacksTurn){
             checkRowWin('row', stoneRow, 'black')
             checkRowWin('col', stoneColumn, 'black')   
-            checkDiagonalWin('black')
+            checkLeftDiagonalWin('black')
+            checkRightDiagonalWin('black')
         }
         else {
 
             checkRowWin('row', stoneRow, 'white')
             checkRowWin('col', stoneColumn, 'white')
-            checkDiagonalWin('white')
+            checkLeftDiagonalWin('white')
+            checkRightDiagonalWin('white')
         }
     }
 
@@ -178,16 +257,54 @@ document.addEventListener('DOMContentLoaded', (e) => {
         })
     }
 
-    function checkDiagonalWin(player) {
-        //grab from each diagonal. Needs to be from each side. 
-        console.log(player)
-        let stonesArr = []
-        for (i = 0; i < lettersArr.length; i++) {
-            for(j = 0; j < lettersArr.length; j++) {
-                let square = document.querySelector(`div[location=${lettersArr[i]}${numbersArr[i]}]`)
-                console.log(square)
+    function checkLeftDiagonalWin(player) {
+        let count = 0; 
+        for(let i = 0; i < leftDiagonalWins.length; i++) {
+            for(let j = 0; j < leftDiagonalWins[i].length; j++) {
+                let stoneDiv = document.querySelector(`div[location=${leftDiagonalWins[i][j]}`)
+                if(stoneDiv.children.length === 0) {
+                    continue
+                }
+                else {
+                    let childAttribute = stoneDiv.children[0].getAttribute('player')
+                    if(childAttribute === player){
+                        count++
+                        if(count === 5) {
+                            console.log(`${player} wins!`)
+                            return;
+                        }
+                    }
+                }
             }
+            count *= 0; 
         }
-    }   
+
+    }  
+
+    function checkRightDiagonalWin(player) {
+        let count = 0; 
+        for(let i = 0; i < rightDiagonalWins.length; i++) {
+            for(let j = 0; j < rightDiagonalWins[i].length; j++) {
+                let stoneDiv = document.querySelector(`div[location=${rightDiagonalWins[i][j]}`)
+                if(stoneDiv.children.length === 0) {
+                    continue
+                }
+                else {
+                    let childAttribute = stoneDiv.children[0].getAttribute('player')
+                    if(childAttribute === player){
+                        count++
+                        if(count === 5) {
+                            console.log(`${player} wins!`)
+                            return;
+                        }
+                    }
+                }
+            }
+            count *= 0; 
+        }
+
+    }  
+    
+    
 
 })
